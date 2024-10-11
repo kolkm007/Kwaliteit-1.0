@@ -1,0 +1,204 @@
+/* Basisreset voor marges en paddings */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Algemene body-stijlen */
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #ffffff; /* Witte achtergrond */
+}
+
+/* Stijlen voor het logo en de titel */
+.kvh-logo-style {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.kvh-text {
+    font-size: 36px;
+    font-weight: bold;
+    color: #b71c1c; /* Rood passend bij KVH-stijl */
+}
+
+/* Secties (pagina's) */
+.section {
+    display: none; /* Verberg standaard alle secties */
+    background-color: white;
+    color: #b71c1c; /* Rode tekstkleur passend bij KVH-stijl */
+    padding: 20px;
+    width: 100%;
+    max-width: 500px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Schaduw voor een subtiele diepte */
+}
+
+.section.active {
+    display: block; /* Toon alleen de actieve sectie */
+}
+
+/* Titel in secties */
+h2 {
+    color: #b71c1c;
+    margin-bottom: 20px;
+}
+
+/* Stijlen voor het inlogscherm */
+#pin-input-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+#pin {
+    width: 80px;
+    padding: 10px;
+    font-size: 24px;
+    text-align: center;
+    border: 2px solid #b71c1c;
+    color: #b71c1c;
+    border-radius: 4px;
+    margin-right: 10px;
+}
+
+#backspace-button {
+    padding: 10px;
+    font-size: 20px;
+    color: white;
+    background-color: #b71c1c;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#backspace-button:hover {
+    background-color: #d32f2f;
+}
+
+/* Stijlen voor de rekenmachine */
+#calculator {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.calc-button {
+    padding: 15px;
+    font-size: 18px;
+    background-color: #b71c1c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.calc-button:hover {
+    background-color: #d32f2f;
+}
+
+/* Foutmelding */
+#error-message {
+    color: red;
+    margin-top: 10px;
+}
+
+/* Stijlen voor machine selectie */
+.machine-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.machine-button {
+    padding: 10px;
+    font-size: 16px;
+    background-color: #b71c1c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.machine-button:hover {
+    background-color: #d32f2f;
+}
+
+/* Formulier stijl */
+.form-grid {
+    display: grid;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.full-width {
+    grid-column: span 2;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+button {
+    padding: 10px;
+    font-size: 16px;
+    background-color: #b71c1c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #d32f2f;
+}
+
+.back-button {
+    background-color: #f44336;
+}
+
+.back-button:hover {
+    background-color: #d32f2f;
+}
+
+/* Bevestigingspagina stijl */
+#confirmation-section {
+    text-align: center;
+}
+
+/* Uitlog en terug knoppen in de bevestigingspagina */
+#back-to-machines-confirm,
+#logout-button {
+    margin-top: 15px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #b71c1c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#back-to-machines-confirm:hover,
+#logout-button:hover {
+    background-color: #d32f2f;
+}

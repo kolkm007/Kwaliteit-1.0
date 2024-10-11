@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kwaliteitscontrole App</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="app">
+        <!-- KVH Logo -->
+        <div class="kvh-logo-style">
+            <img src="assets/kvh-logo.png" alt="KVH Logo" class="kvh-logo">
+        </div>
+
+        <!-- Rekenmachine Inlogscherm (Pagina 1) -->
+        <div id="login-section" class="section active">
+            <div id="pin-input-wrapper">
+                <input type="password" id="pin" maxlength="4" readonly aria-label="Pincode Invoer">
+                <button id="backspace-button" aria-label="Verwijder Laatste Cijfer">
+                    <img src="https://img.icons8.com/ios-glyphs/30/000000/backspace.png" alt="Backspace">
+                </button>
+            </div>
+            <div id="calculator">
+                <button class="calc-button" data-value="1" aria-label="1">1</button>
+                <button class="calc-button" data-value="2" aria-label="2">2</button>
+                <button class="calc-button" data-value="3" aria-label="3">3</button>
+                <button class="calc-button" data-value="4" aria-label="4">4</button>
+                <button class="calc-button" data-value="5" aria-label="5">5</button>
+                <button class="calc-button" data-value="6" aria-label="6">6</button>
+                <button class="calc-button" data-value="7" aria-label="7">7</button>
+                <button class="calc-button" data-value="8" aria-label="8">8</button>
+                <button class="calc-button" data-value="9" aria-label="9">9</button>
+                <button class="calc-button" aria-hidden="true"></button> <!-- Lege knop voor juiste positie -->
+                <button class="calc-button" data-value="0" aria-label="0">0</button>
+                
+            </div>
+            <p id="error-message" class="error-message" aria-live="polite" style="display: none;">Onjuiste code. Probeer het opnieuw.</p>
+        </div>
+
+        <!-- Machine selectie menu (Pagina 2) -->
+        <div id="machine-selection-section" class="section hidden">
+            <div id="user-display" class="username-display" aria-live="polite"></div> <!-- Gebruiker wordt hier weergegeven -->
+            <h2>Selecteer een Machine</h2>
+            <div class="machine-grid">
+                <button class="machine-button" data-machine="Machine 1" aria-label="Machine 1">Machine 1</button>
+                <button class="machine-button" data-machine="Machine 2" aria-label="Machine 2">Machine 2</button>
+                <button class="machine-button" data-machine="Machine 3" aria-label="Machine 3">Machine 3</button>
+                <button class="machine-button" data-machine="Machine 4" aria-label="Machine 4">Machine 4</button>
+                <button class="machine-button" data-machine="Machine 5" aria-label="Machine 5">Machine 5</button>
+                <button class="machine-button" data-machine="Machine 6" aria-label="Machine 6">Machine 6</button>
+                <button class="machine-button" data-machine="Machine 7" aria-label="Machine 7">Machine 7</button>
+                <button class="machine-button" data-machine="Machine 8" aria-label="Machine 8">Machine 8</button>
+                <button class="machine-button" data-machine="Machine 9" aria-label="Machine 9">Machine 9</button>
+                <button class="machine-button" data-machine="Machine 10" aria-label="Machine 10">Machine 10</button>
+            </div>
+        </div>
+
+        <!-- Kwaliteitscontrole Formulier (Pagina 3) -->
+        <div id="form-section" class="section hidden">
+            <div class="form-wrapper">
+                <h2>Kwaliteitscontrole</h2>
+                <div class="form-grid">
+                    <div class="form-element">
+                        <label for="product-number">Productnummer of Foto:</label>
+                        <input type="text" id="product-number" placeholder="Vul productnummer in">
+                    </div>
+                    <div class="form-element">
+                        <label for="product-photo">Of maak een foto:</label>
+                        <input type="file" id="product-photo" accept="image/*" capture="camera" aria-label="Maak een foto">
+                    </div>
+                    <div class="form-element">
+                        <label for="product-weight">Productgewicht:</label>
+                        <input type="number" id="product-weight" placeholder="Vul gewicht in gram in">
+                    </div>
+                    <div class="form-element">
+                        <label for="product-thickness">Productdikte:</label>
+                        <input type="number" id="product-thickness" placeholder="Vul dikte in mm in">
+                    </div>
+                    <div class="form-element">
+                        <label for="comments">Opmerkingen:</label>
+                        <textarea id="comments" placeholder="Voeg opmerkingen toe"></textarea>
+                    </div>
+                    <div class="form-element">
+                        <label>Voldoet het product aan de eisen?</label>
+                        <select id="result" aria-label="Selecteer of het product voldoet aan de eisen">
+                            <option value="ja">Ja</option>
+                            <option value="nee">Nee</option>
+                        </select>
+                    </div>
+                    <div class="form-element">
+                        <button id="submit-button" aria-label="Verzend het formulier">Verzenden</button>
+                        <button id="back-button" class="back-button" aria-label="Ga terug naar Hoofdpagina">Terug naar Hoofdpagina</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bevestigingspagina (Pagina 4) -->
+        <div id="confirmation-section" class="section hidden">
+            <h2>Super! Uw formulier is verzonden.</h2>
+            <button id="back-to-machines" aria-label="Terug naar Machines">Terug naar Machines</button>
+            <button id="logout-button" aria-label="Uitloggen">Uitloggen</button>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
