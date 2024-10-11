@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<html>
 <html lang="nl">
 <head>
     <meta charset="UTF-8">
@@ -13,36 +13,89 @@
             <img src="assets/kvh-logo.png" alt="KVH Logo" class="kvh-logo">
         </div>
 
-        <!-- Rekenmachine Inlogscherm (Pagina 1) -->
+        <div id="sidebar">
+            <h3>Pagina Selector</h3>
+            <button class="nav-button" data-section="login-section">Login Pagina</button>
+            <button class="nav-button" data-section="welcome-section">Welkom Pagina</button>
+            <button class="nav-button" data-section="machine-selection-section">Machine Selectie</button>
+            <button class="nav-button" data-section="report-problem-section">Probleem Melden</button>
+            <button class="nav-button" data-section="form-section">Kwaliteitscontrole Formulier</button>
+            <button class="nav-button" data-section="confirmation-section">Bevestigingspagina</button>
+        </div>
+
+        <!-- Inlogscherm (Pagina 1) -->
         <div id="login-section" class="section active">
+            <h1>Inloggen</h1>
             <div id="pin-input-wrapper">
-                <input type="password" id="pin" maxlength="4" readonly aria-label="Pincode Invoer">
+
+
+                <!-- Invoerveld aangepast voor minimaal 4 en maximaal 8 cijfers -->
+                <input type="tel" id="pin" placeholder="Voer pincode in" maxlength="8" inputmode="numeric" aria-label="Pincode Invoer">
                 <button id="backspace-button" aria-label="Verwijder Laatste Cijfer">
                     <img src="https://img.icons8.com/ios-glyphs/30/000000/backspace.png" alt="Backspace">
                 </button>
             </div>
-            <div id="calculator">
-                <button class="calc-button" data-value="1" aria-label="1">1</button>
-                <button class="calc-button" data-value="2" aria-label="2">2</button>
-                <button class="calc-button" data-value="3" aria-label="3">3</button>
-                <button class="calc-button" data-value="4" aria-label="4">4</button>
-                <button class="calc-button" data-value="5" aria-label="5">5</button>
-                <button class="calc-button" data-value="6" aria-label="6">6</button>
-                <button class="calc-button" data-value="7" aria-label="7">7</button>
-                <button class="calc-button" data-value="8" aria-label="8">8</button>
-                <button class="calc-button" data-value="9" aria-label="9">9</button>
-                <button class="calc-button" aria-hidden="true"></button> <!-- Lege knop voor juiste positie -->
-                <button class="calc-button" data-value="0" aria-label="0">0</button>
-                
-            </div>
+            <button id="submit-code" aria-label="Bevestig pincode">Bevestigen</button>
             <p id="error-message" class="error-message" aria-live="polite" style="display: none;">Onjuiste code. Probeer het opnieuw.</p>
         </div>
+
+        <div id="welcome-section" class="section hidden">
+            <h2>Welkom, <span id="welcome-user"></span>!</h2>
+            <p>Maak een keuze:</p>
+            <button id="report-problem-button" aria-label="Probleem melden verpakking">Probleem Melden Verpakking</button>
+            <button id="continue-to-machines-button" aria-label="Doorgaan naar machine selectie">Doorgaan naar Machine Selectie</button>
+        </div>
+
+
+        <!-- Probleem Melden Pagina (Pagina 3) -->
+<div id="report-problem-section" class="section hidden">
+    <h2>Probleem Melden</h2>
+    <form id="problem-form">
+        <!-- Productcode -->
+        <div class="form-element">
+            <label for="product-code">Productcode:</label>
+            <input type="text" id="product-code" placeholder="Vul productcode in" required>
+        </div>
+        
+        <!-- Foto upload -->
+        <div class="form-element">
+            <label for="product-photo">Foto upload (meerdere foto's toegestaan):</label>
+            <input type="file" id="product-photo" accept="image/*" multiple required>
+        </div>
+        
+        <!-- Argumentatie -->
+        <div class="form-element">
+            <label for="argumentation">Argumentatie:</label>
+            <textarea id="argumentation" placeholder="Voer argumentatie in" minlength="1" required></textarea>
+        </div>
+        
+        <!-- Oplossing gevonden? -->
+        <div class="form-element">
+            <label>Oplossing gevonden?</label>
+            <label><input type="radio" name="solution" value="yes" required> Ja</label>
+            <label><input type="radio" name="solution" value="no" required> Nee</label>
+        </div>
+        
+        <!-- Verzendknop -->
+        <button type="button" id="submit-problem" aria-label="Verzend het probleem">Verzenden</button>
+    </form>
+</div>
+
+<!-- Bevestigingspagina na versturen -->
+<div id="submission-confirmation" class="section hidden">
+    <h2>Formulier succesvol verstuurd!</h2>
+    <p>U wordt teruggestuurd naar de inlogpagina.</p>
+</div>
+
+
+
 
         <!-- Machine selectie menu (Pagina 2) -->
         <div id="machine-selection-section" class="section hidden">
             <div id="user-display" class="username-display" aria-live="polite"></div> <!-- Gebruiker wordt hier weergegeven -->
             <h2>Selecteer een Machine</h2>
             <div class="machine-grid">
+                <!-- Hier 15 machines volgens je wensen -->
                 <button class="machine-button" data-machine="Machine 1" aria-label="Machine 1">Machine 1</button>
                 <button class="machine-button" data-machine="Machine 2" aria-label="Machine 2">Machine 2</button>
                 <button class="machine-button" data-machine="Machine 3" aria-label="Machine 3">Machine 3</button>
@@ -53,8 +106,17 @@
                 <button class="machine-button" data-machine="Machine 8" aria-label="Machine 8">Machine 8</button>
                 <button class="machine-button" data-machine="Machine 9" aria-label="Machine 9">Machine 9</button>
                 <button class="machine-button" data-machine="Machine 10" aria-label="Machine 10">Machine 10</button>
+                <button class="machine-button" data-machine="Machine 11" aria-label="Machine 11">Machine 11</button>
+                <button class="machine-button" data-machine="Machine 12" aria-label="Machine 12">Machine 12</button>
+                <button class="machine-button" data-machine="Machine 13" aria-label="Machine 13">Machine 13</button>
+                <button class="machine-button" data-machine="Machine 14" aria-label="Machine 14">Machine 14</button>
+                <button class="machine-button" data-machine="Machine 15" aria-label="Machine 15">Machine 15</button>
             </div>
         </div>
+
+
+
+
 
         <!-- Kwaliteitscontrole Formulier (Pagina 3) -->
         <div id="form-section" class="section hidden">
@@ -69,10 +131,13 @@
                         <label for="product-photo">Of maak een foto:</label>
                         <input type="file" id="product-photo" accept="image/*" capture="camera" aria-label="Maak een foto">
                     </div>
-                    <div class="form-element">
-                        <label for="product-weight">Productgewicht:</label>
-                        <input type="number" id="product-weight" placeholder="Vul gewicht in gram in">
-                    </div>
+                    <<div class="form-element">
+                           <label for="product-weight">Productgewicht (in gram):</label>
+                             <input type="text" id="product-weight" placeholder="Voer gewicht in gram in, bijv. 12,5">
+    <p id="weight-error" class="error-message" style="display: none;">Gebruik alleen cijfers en één komma.</p> 
+</div>
+
+
                     <div class="form-element">
                         <label for="product-thickness">Productdikte:</label>
                         <input type="number" id="product-thickness" placeholder="Vul dikte in mm in">

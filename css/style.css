@@ -11,46 +11,78 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
     background-color: #ffffff; /* Witte achtergrond */
 }
 
-/* Stijlen voor het logo en de titel */
-.kvh-logo-style {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.kvh-text {
-    font-size: 36px;
-    font-weight: bold;
-    color: #b71c1c; /* Rood passend bij KVH-stijl */
-}
-
-/* Secties (pagina's) */
+/* Algemene sectiestijlen */
 .section {
     display: none; /* Verberg standaard alle secties */
+    transition: all 0.3s ease-in-out;
     background-color: white;
     color: #b71c1c; /* Rode tekstkleur passend bij KVH-stijl */
     padding: 20px;
     width: 100%;
     max-width: 500px;
+    border: 2px solid #b71c1c; /* Rode rand consistent voor alle secties */
     border-radius: 8px;
     text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Schaduw voor een subtiele diepte */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Schaduw voor subtiele diepte */
 }
 
+/* Actieve sectie */
 .section.active {
-    display: block; /* Toon alleen de actieve sectie */
+    display: block;
+    border-color: #b71c1c; /* Zorg ervoor dat de rand rood blijft bij een actieve sectie */
+    box-shadow: 0 0 10px rgba(183, 28, 28, 0.5); /* Extra schaduw voor focus */
+}
+
+/* Verbergen van secties */
+.section.hidden {
+    display: none;
+}
+
+/* Feedback voor navigatie met kleur en overgang */
+.nav-button {
+    display: block;
+    margin: 8px 0;
+    padding: 10px;
+    background-color: #b71c1c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s, box-shadow 0.3s; /* Zachte overgang */
+}
+
+.nav-button:hover {
+    background-color: #d32f2f;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Extra schaduw voor hover feedback */
+}
+
+/* Stijlen voor het logo */
+.kvh-logo-style {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.kvh-logo {
+    width: 100px;
 }
 
 /* Titel in secties */
-h2 {
+h1, h2 {
     color: #b71c1c;
     margin-bottom: 20px;
 }
 
-/* Stijlen voor het inlogscherm */
+/* Login sectie stijl */
+#login-section {
+    border-color: #b71c1c;
+}
+
+/* Pin invoerveld en knoppen */
 #pin-input-wrapper {
     display: flex;
     align-items: center;
@@ -59,7 +91,8 @@ h2 {
 }
 
 #pin {
-    width: 80px;
+    width: 100%;
+    max-width: 200px;
     padding: 10px;
     font-size: 24px;
     text-align: center;
@@ -69,7 +102,7 @@ h2 {
     margin-right: 10px;
 }
 
-#backspace-button {
+#backspace-button, #submit-code {
     padding: 10px;
     font-size: 20px;
     color: white;
@@ -77,42 +110,18 @@ h2 {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-}
-
-#backspace-button:hover {
-    background-color: #d32f2f;
-}
-
-/* Stijlen voor de rekenmachine */
-#calculator {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-    margin-top: 20px;
-}
-
-.calc-button {
-    padding: 15px;
-    font-size: 18px;
-    background-color: #b71c1c;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
     transition: background-color 0.3s;
 }
 
-.calc-button:hover {
+#backspace-button:hover, #submit-code:hover {
     background-color: #d32f2f;
 }
 
-/* Foutmelding */
-#error-message {
-    color: red;
-    margin-top: 10px;
+/* Machine selectie sectie */
+#machine-selection-section {
+    border-color: #b71c1c;
 }
 
-/* Stijlen voor machine selectie */
 .machine-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -135,15 +144,15 @@ h2 {
     background-color: #d32f2f;
 }
 
-/* Formulier stijl */
+/* Kwaliteitscontrole formulier sectie */
+#form-section {
+    border-color: #b71c1c;
+}
+
 .form-grid {
     display: grid;
     gap: 10px;
     margin-top: 20px;
-}
-
-.full-width {
-    grid-column: span 2;
 }
 
 input, select, textarea {
@@ -155,6 +164,12 @@ input, select, textarea {
     margin-top: 10px;
 }
 
+.input-error {
+    border-color: red;
+    background-color: #ffe6e6; /* Lichtrode achtergrond voor aandacht */
+}
+
+/* Algemene knopstijl */
 button {
     padding: 10px;
     font-size: 16px;
@@ -181,13 +196,40 @@ button:hover {
 
 /* Bevestigingspagina stijl */
 #confirmation-section {
+    border-color: #b71c1c;
     text-align: center;
 }
 
-/* Uitlog en terug knoppen in de bevestigingspagina */
-#back-to-machines-confirm,
-#logout-button {
-    margin-top: 15px;
+/* Probleem Melden pagina stijl */
+#report-problem-section {
+    border-color: #b71c1c;
+    text-align: left;
+}
+
+#report-problem-section h2 {
+    text-align: center;
+    color: #b71c1c;
+}
+
+.form-element {
+    margin-bottom: 15px;
+}
+
+.form-element label {
+    font-weight: bold;
+    color: #b71c1c;
+}
+
+#product-code, #argumentation, #product-photo, textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    margin-top: 5px;
+}
+
+#submit-problem {
     padding: 10px 20px;
     font-size: 16px;
     background-color: #b71c1c;
@@ -196,9 +238,33 @@ button:hover {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
+    display: block;
+    width: 100%;
 }
 
-#back-to-machines-confirm:hover,
-#logout-button:hover {
+#submit-problem:hover {
     background-color: #d32f2f;
+}
+
+#submission-confirmation {
+    text-align: center;
+}
+
+/* Sidebar stijl */
+#sidebar {
+    position: fixed;
+    top: 10%;
+    right: 10px;
+    background-color: #ffffff;
+    border: 2px solid #b71c1c;
+    border-radius: 8px;
+    padding: 15px;
+    width: 150px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+#sidebar h3 {
+    color: #b71c1c;
+    margin-bottom: 10px;
 }
